@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name:  node-app
-        image:  "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA"
+        image:  ${image}
  
 ---
 apiVersion: v1 
