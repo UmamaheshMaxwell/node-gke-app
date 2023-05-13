@@ -1,0 +1,18 @@
+substitutions:
+  _PROJECT_ID: '$PROJECT_ID'
+  _$SHORT_SHA: '$SHORT_SHA'
+  _DOCKER_IMAGE: "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA"
+steps:
+  #Build the container Image 
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ["build", "-t", "$_DOCKER_IMAGE", "."]
+  # pusth the repo to container registry 
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ["push", "$_DOCKER_IMAGE" ]
+  - name: 'gcr.io/cloud-builders/gke-deploy'
+    args:
+      - run 
+      - -- filename=k8s/deployment.yaml
+      - -- image=$_DOCKER_IMAGE
+      - -- location=us-central1
+      - -- cluster=k8s-cluster
