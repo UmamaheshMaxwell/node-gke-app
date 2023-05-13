@@ -1,6 +1,6 @@
 substitutions:
   _PROJECT_ID: '$PROJECT_ID'
-  _$SHORT_SHA: '$SHORT_SHA'
+  _SHORT_SHA: '$SHORT_SHA'
   _DOCKER_IMAGE: "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA"
 steps:
   #Build the container Image 
