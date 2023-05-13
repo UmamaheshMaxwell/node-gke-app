@@ -17,6 +17,6 @@ steps:
     args:
     - run 
     - --filename=k8s/deployment.yaml
-    - --image="gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA"
+    - --image=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
     - --location=us-central1
     - --cluster=k8s-cluster
