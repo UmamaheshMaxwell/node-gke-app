@@ -9,7 +9,7 @@ app.get("/user", (req, res)=> {
     res.json([{
         id: 1, name: "Scott Desatnick",
         id: 2, name: "Adam Colson",
-        id: 3, name: "Tuan Bui",
+        id: 3, name: "Tuan Bui"
     }])
 })
 

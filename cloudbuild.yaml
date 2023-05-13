@@ -2,28 +2,17 @@ substitutions:
   _PROJECT_ID: '$PROJECT_ID'
 steps:
   #Build the container Image 
-  # - name: "node"
-  #   entrypoint: "bash"
-  #   args:
-  #   - -c
-  #   - |
-  #     echo $_PROJECT_ID 
   - name: 'gcr.io/cloud-builders/docker'
     args: ["build", "-t", "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA", "."]
   # pusth the repo to container registry 
   - name: 'gcr.io/cloud-builders/docker'
     args: ["push", "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA" ]
+  # Deploy containers to GKE
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
     - run 
     - --filename=k8s/deployment.yaml
-    - --image=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
+    # Below line will replace the conatiner image in deployement file 
+    - --image=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA 
     - --location=us-central1-a
     - --cluster=k8s-cluster
-  # - name: 'gcr.io/cloud-builders/gke-deploy'
-  #   entrypoint: 'bash'
-  #   args:
-  #     - '-c'
-  #     - |
-  #       export IMAGE_NAME=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
-  #       cat k8s/deployment.yaml | envsubst | kubectl apply -f -
