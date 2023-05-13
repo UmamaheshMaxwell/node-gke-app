@@ -4,6 +4,14 @@ substitutions:
   _DOCKER_IMAGE: "gcr.io/$_PROJECT_ID/node-app:$_SHORT_SHA"
 steps:
   #Build the container Image 
+  - name: "node"
+    entrypoint: "bash"
+    args:
+    - -c
+    - |
+      echo $_PROJECT_ID 
+      echo $_SHORT_SHA
+      echo $_DOCKER_IMAGE
   - name: 'gcr.io/cloud-builders/docker'
     args: ["build", "-t", "$_DOCKER_IMAGE", "."]
   # pusth the repo to container registry 
