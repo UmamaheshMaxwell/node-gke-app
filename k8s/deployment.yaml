@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name:  node-app
-        image:  $IMAGE_NAME
+        image:  gcr.io/gcp-training-377619/node-app
  
 ---
 apiVersion: v1 

@@ -13,17 +13,17 @@ steps:
   # pusth the repo to container registry 
   - name: 'gcr.io/cloud-builders/docker'
     args: ["push", "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA" ]
-  # - name: 'gcr.io/cloud-builders/gke-deploy'
-  #   args:
-  #   - run 
-  #   - --filename=k8s/deployment.yaml
-  #   - --image=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
-  #   - --location=us-central1
-  #   - --cluster=k8s-cluster
   - name: 'gcr.io/cloud-builders/gke-deploy'
-    entrypoint: 'bash'
     args:
-      - '-c'
-      - |
-        export IMAGE_NAME=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
-        cat k8s/deployment.yaml | envsubst | kubectl apply -f -
+    - run 
+    - --filename=k8s/deployment.yaml
+    - --image=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
+    - --location=us-central1
+    - --cluster=k8s-cluster
+  # - name: 'gcr.io/cloud-builders/gke-deploy'
+  #   entrypoint: 'bash'
+  #   args:
+  #     - '-c'
+  #     - |
+  #       export IMAGE_NAME=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
+  #       cat k8s/deployment.yaml | envsubst | kubectl apply -f -
