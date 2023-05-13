@@ -1,7 +1,7 @@
 substitutions:
   _PROJECT_ID: '$PROJECT_ID'
   _SHORT_SHA: '$SHORT_SHA'
-  _DOCKER_IMAGE: "gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA"
+  _DOCKER_IMAGE: "gcr.io/$_PROJECT_ID/node-app:$_SHORT_SHA"
 steps:
   #Build the container Image 
   - name: 'gcr.io/cloud-builders/docker'
