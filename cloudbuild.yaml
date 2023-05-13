@@ -16,7 +16,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
     - run 
-    - -- filename=k8s/deployment.yaml
-    - -- image="gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA"
-    - -- location=us-central1
-    - -- cluster=k8s-cluster
+    - --filename=k8s/deployment.yaml
+    - --image="gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA"
+    - --location=us-central1
+    - --cluster=k8s-cluster
