@@ -18,7 +18,7 @@ steps:
     - run 
     - --filename=k8s/deployment.yaml
     - --image=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
-    - --location=us-central1
+    - --location=us-central1-a
     - --cluster=k8s-cluster
   # - name: 'gcr.io/cloud-builders/gke-deploy'
   #   entrypoint: 'bash'
