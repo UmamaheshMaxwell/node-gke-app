@@ -20,3 +20,5 @@ steps:
     - --image=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA
     - --location=us-central1
     - --cluster=k8s-cluster
+    substitutions:
+      _IMAGE_NAME: gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA

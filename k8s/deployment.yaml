@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name:  node-app
-        image:  ${image}
+        image:  $(_IMAGE_NAME)
  
 ---
 apiVersion: v1 
