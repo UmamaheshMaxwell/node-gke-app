@@ -15,4 +15,4 @@ steps:
     # Below line will replace the conatiner image in deployement file 
     - --image=gcr.io/$_PROJECT_ID/node-app:$SHORT_SHA 
     - --location=us-central1-a
-    - --cluster=k8s-cluster
+    - --cluster=private-cluster
