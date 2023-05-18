@@ -1,0 +1,16 @@
+gcloud beta container binauthz attestations sign-and-create \
+    --project="gcp-training-386807" \
+    --artifact-url="gcr.io/gcp-training-386807/node-gke-app@sha256:e40d556d179614e378e848f5754322a5310afd01edeed8d642137d7570a725f7" \
+    --attestor="admin" \
+    --attestor-project="gcp-training-386807" \
+    --keyversion-project="gcp-training-386807" \
+    --keyversion-location="global" \
+    --keyversion-keyring="poc-key-ring" \
+    --keyversion-key="binary-auth" \
+    --keyversion="1"
+
+
+gcloud beta container binauthz attestations list \
+    --project="gcp-training-386807" \
+    --attestor="projects/gcp-training-386807/attestors/admin" \
+    --artifact-url="gcr.io/gcp-training-386807/node-gke-app@sha256:e40d556d179614e378e848f5754322a5310afd01edeed8d642137d7570a725f7"
